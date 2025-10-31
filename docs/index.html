@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rei Miyashiro">
 
-<title>dashboards</title>
+<title>Star Wars Dashboared – dashboards</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,10 +36,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-97e8118aa17df01863e4d4c59f1f926f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,12 +75,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.11.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -136,48 +120,802 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-</header>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Star Wars Dashboared</a></div>
+        
+        <div class="navbar-author">Rei Miyashiro</div>
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-page-1" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#page-1" data-scrolling="false" href="#page-1" aria-controls="page-1" aria-selected="true"><span class="nav-link-text">Page 1</span></a></li><li class="nav-item" role="presentation"><a id="tab-page-2" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#page-2" data-scrolling="false" href="#page-2" aria-controls="page-2" aria-selected="false"><span class="nav-link-text">Page 2</span></a></li></ul></div></div>
+</nav>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">dashboards</h1>
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="page-1" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-page-1">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-92af82f869813fcd83d6" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-92af82f869813fcd83d6">{"x":{"data":[{"x":[77,75,32,136,49,120,75,32,84,77,84,null,112,80,74,1358,77,110,17,75,78.200000000000003,140,113,79,79,83,null,null,20,68,89,90,null,45,66,82,null,null,null,40,null,null,80,null,55,15,45,null,65,84,82,87,null,50,null,null,80,null,85,null,null,80,56.200000000000003,50,null,80,null,79,55,102,88,null,null,null,48,null,57,159,136,79,48,80,null,null,null,null,null],"y":[172,167,96,202,150,178,165,97,183,182,188,180,228,180,173,175,170,180,66,170,183,200,190,177,175,180,150,null,88,160,193,191,170,185,196,224,206,183,137,112,183,163,175,180,178,79,94,122,163,188,198,196,171,184,188,264,188,196,185,157,183,183,170,166,165,193,191,183,168,198,229,213,167,96,193,191,178,216,234,188,178,206,null,null,null,null,null],"text":["mass:   77.0<br />height: 172<br />Luke Skywalker","mass:   75.0<br />height: 167<br />C-3PO","mass:   32.0<br />height:  96<br />R2-D2","mass:  136.0<br />height: 202<br />Darth Vader","mass:   49.0<br />height: 150<br />Leia Organa","mass:  120.0<br />height: 178<br />Owen Lars","mass:   75.0<br />height: 165<br />Beru Whitesun Lars","mass:   32.0<br />height:  97<br />R5-D4","mass:   84.0<br />height: 183<br />Biggs Darklighter","mass:   77.0<br />height: 182<br />Obi-Wan Kenobi","mass:   84.0<br />height: 188<br />Anakin Skywalker","mass:     NA<br />height: 180<br />Wilhuff Tarkin","mass:  112.0<br />height: 228<br />Chewbacca","mass:   80.0<br />height: 180<br />Han Solo","mass:   74.0<br />height: 173<br />Greedo","mass: 1358.0<br />height: 175<br />Jabba Desilijic Tiure","mass:   77.0<br />height: 170<br />Wedge Antilles","mass:  110.0<br />height: 180<br />Jek Tono Porkins","mass:   17.0<br />height:  66<br />Yoda","mass:   75.0<br />height: 170<br />Palpatine","mass:   78.2<br />height: 183<br />Boba Fett","mass:  140.0<br />height: 200<br />IG-88","mass:  113.0<br />height: 190<br />Bossk","mass:   79.0<br />height: 177<br />Lando Calrissian","mass:   79.0<br />height: 175<br />Lobot","mass:   83.0<br />height: 180<br />Ackbar","mass:     NA<br />height: 150<br />Mon Mothma","mass:     NA<br />height:  NA<br />Arvel Crynyd","mass:   20.0<br />height:  88<br />Wicket Systri Warrick","mass:   68.0<br />height: 160<br />Nien Nunb","mass:   89.0<br />height: 193<br />Qui-Gon Jinn","mass:   90.0<br />height: 191<br />Nute Gunray","mass:     NA<br />height: 170<br />Finis Valorum","mass:   45.0<br />height: 185<br />Padmé Amidala","mass:   66.0<br />height: 196<br />Jar Jar Binks","mass:   82.0<br />height: 224<br />Roos Tarpals","mass:     NA<br />height: 206<br />Rugor Nass","mass:     NA<br />height: 183<br />Ric Olié","mass:     NA<br />height: 137<br />Watto","mass:   40.0<br />height: 112<br />Sebulba","mass:     NA<br />height: 183<br />Quarsh Panaka","mass:     NA<br />height: 163<br />Shmi Skywalker","mass:   80.0<br />height: 175<br />Darth Maul","mass:     NA<br />height: 180<br />Bib Fortuna","mass:   55.0<br />height: 178<br />Ayla Secura","mass:   15.0<br />height:  79<br />Ratts Tyerel","mass:   45.0<br />height:  94<br />Dud Bolt","mass:     NA<br />height: 122<br />Gasgano","mass:   65.0<br />height: 163<br />Ben Quadinaros","mass:   84.0<br />height: 188<br />Mace Windu","mass:   82.0<br />height: 198<br />Ki-Adi-Mundi","mass:   87.0<br />height: 196<br />Kit Fisto","mass:     NA<br />height: 171<br />Eeth Koth","mass:   50.0<br />height: 184<br />Adi Gallia","mass:     NA<br />height: 188<br />Saesee Tiin","mass:     NA<br />height: 264<br />Yarael Poof","mass:   80.0<br />height: 188<br />Plo Koon","mass:     NA<br />height: 196<br />Mas Amedda","mass:   85.0<br />height: 185<br />Gregar Typho","mass:     NA<br />height: 157<br />Cordé","mass:     NA<br />height: 183<br />Cliegg Lars","mass:   80.0<br />height: 183<br />Poggle the Lesser","mass:   56.2<br />height: 170<br />Luminara Unduli","mass:   50.0<br />height: 166<br />Barriss Offee","mass:     NA<br />height: 165<br />Dormé","mass:   80.0<br />height: 193<br />Dooku","mass:     NA<br />height: 191<br />Bail Prestor Organa","mass:   79.0<br />height: 183<br />Jango Fett","mass:   55.0<br />height: 168<br />Zam Wesell","mass:  102.0<br />height: 198<br />Dexter Jettster","mass:   88.0<br />height: 229<br />Lama Su","mass:     NA<br />height: 213<br />Taun We","mass:     NA<br />height: 167<br />Jocasta Nu","mass:     NA<br />height:  96<br />R4-P17","mass:   48.0<br />height: 193<br />Wat Tambor","mass:     NA<br />height: 191<br />San Hill","mass:   57.0<br />height: 178<br />Shaak Ti","mass:  159.0<br />height: 216<br />Grievous","mass:  136.0<br />height: 234<br />Tarfful","mass:   79.0<br />height: 188<br />Raymus Antilles","mass:   48.0<br />height: 178<br />Sly Moore","mass:   80.0<br />height: 206<br />Tion Medon","mass:     NA<br />height:  NA<br />Finn","mass:     NA<br />height:  NA<br />Rey","mass:     NA<br />height:  NA<br />Poe Dameron","mass:     NA<br />height:  NA<br />BB8","mass:     NA<br />height:  NA<br />Captain Phasma"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":37.260273972602747,"l":43.105022831050235},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-52.150000000000006,1425.1500000000001],"tickmode":"array","ticktext":["0","500","1000"],"tickvals":[0,500,1000.0000000000001],"categoryorder":"array","categoryarray":["0","500","1000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"mass","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[56.100000000000001,273.89999999999998],"tickmode":"array","ticktext":["100","150","200","250"],"tickvals":[100,150,200,250],"categoryorder":"array","categoryarray":["100","150","200","250"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"height","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1cd62dd94b38":{"x":{},"y":{},"text":{},"type":"scatter"}},"cur_data":"1cd62dd94b38","visdat":{"1cd62dd94b38":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+
+</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-2"><li class="nav-item" role="presentation"><a href="#card-tabset-2-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="bar Chart" aria-selected="true" class="nav-link active">bar Chart</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-2-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Table" aria-selected="false" class="nav-link">Table</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-2"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-1"><div class="card-body html-fill-item html-fill-container" data-title="bar Chart">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-ed1d071eb2f0e8857e06" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-ed1d071eb2f0e8857e06">{"x":{"data":[{"orientation":"v","width":[0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999997044,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999979991,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999997044,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,null,null,0.71999999999999886,null,null,0.71999999999999886,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,0.71999999999999886,null,null,0.71999999999999886,null,0.71999999999999886,null,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,0.71999999999999886,null,0.71999999999999886,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,null,null,0.71999999999999886,null,0.71999999999999886,0.71999999999997044,0.71999999999997044,0.71999999999999886,0.71999999999999886,0.71999999999999886,null,null,null,null,null],"base":[0,0,0,0,0,0,167,96,0,172,183,0,0,0,0,0,354,0,0,332,0,0,0,0,177,0,0,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,180,0,0,0,185,0,0,371,224,0,0,0,0,0,355,0,0,0,0,543,0,184,0,726,0,352,178,0,0,0,0,0,0,0,0,0,202,535,193,919,null,null,null,null,null],"x":[77,75,32,136,49,120,75,32,84,77,84,null,112,80,74,1358,77,110,17,75,78.200000000000003,140,113,79,79,83,null,null,20,68,89,90,null,45,66,82,null,null,null,40,null,null,80,null,55,15,45,null,65,84,82,87,null,50,null,null,80,null,85,null,null,80,56.200000000000003,50,null,80,null,79,55,102,88,null,null,null,48,null,57,159,136,79,48,80,null,null,null,null,null],"y":[172,167,96,202,150,178,165,97,183,182,188,0,228,180,173,175,170,180,66,170,183,200,190,177,175,180,0,null,88,160,193,191,0,185,196,224,0,0,0,112,0,0,175,0,178,79,94,0,163,188,198,196,0,184,0,0,188,0,185,0,0,183,170,166,0,193,0,183,168,198,229,0,0,0,193,0,178,216,234,188,178,206,null,null,null,null,null],"text":["mass:   77.0<br />height: 172","mass:   75.0<br />height: 167","mass:   32.0<br />height:  96","mass:  136.0<br />height: 202","mass:   49.0<br />height: 150","mass:  120.0<br />height: 178","mass:   75.0<br />height: 165","mass:   32.0<br />height:  97","mass:   84.0<br />height: 183","mass:   77.0<br />height: 182","mass:   84.0<br />height: 188","mass:     NA<br />height:   0","mass:  112.0<br />height: 228","mass:   80.0<br />height: 180","mass:   74.0<br />height: 173","mass: 1358.0<br />height: 175","mass:   77.0<br />height: 170","mass:  110.0<br />height: 180","mass:   17.0<br />height:  66","mass:   75.0<br />height: 170","mass:   78.2<br />height: 183","mass:  140.0<br />height: 200","mass:  113.0<br />height: 190","mass:   79.0<br />height: 177","mass:   79.0<br />height: 175","mass:   83.0<br />height: 180","mass:     NA<br />height:   0","mass:     NA<br />height:  NA","mass:   20.0<br />height:  88","mass:   68.0<br />height: 160","mass:   89.0<br />height: 193","mass:   90.0<br />height: 191","mass:     NA<br />height:   0","mass:   45.0<br />height: 185","mass:   66.0<br />height: 196","mass:   82.0<br />height: 224","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:   40.0<br />height: 112","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:   80.0<br />height: 175","mass:     NA<br />height:   0","mass:   55.0<br />height: 178","mass:   15.0<br />height:  79","mass:   45.0<br />height:  94","mass:     NA<br />height:   0","mass:   65.0<br />height: 163","mass:   84.0<br />height: 188","mass:   82.0<br />height: 198","mass:   87.0<br />height: 196","mass:     NA<br />height:   0","mass:   50.0<br />height: 184","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:   80.0<br />height: 188","mass:     NA<br />height:   0","mass:   85.0<br />height: 185","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:   80.0<br />height: 183","mass:   56.2<br />height: 170","mass:   50.0<br />height: 166","mass:     NA<br />height:   0","mass:   80.0<br />height: 193","mass:     NA<br />height:   0","mass:   79.0<br />height: 183","mass:   55.0<br />height: 168","mass:  102.0<br />height: 198","mass:   88.0<br />height: 229","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:     NA<br />height:   0","mass:   48.0<br />height: 193","mass:     NA<br />height:   0","mass:   57.0<br />height: 178","mass:  159.0<br />height: 216","mass:  136.0<br />height: 234","mass:   79.0<br />height: 188","mass:   48.0<br />height: 178","mass:   80.0<br />height: 206","mass:     NA<br />height:  NA","mass:     NA<br />height:  NA","mass:     NA<br />height:  NA","mass:     NA<br />height:  NA","mass:     NA<br />height:  NA"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":39.812320395570097,"l":43.105022831050235},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-52.545999999999992,1425.5459999999998],"tickmode":"array","ticktext":["0","500","1000"],"tickvals":[0,500.00000000000006,1000],"categoryorder":"array","categoryarray":["0","500","1000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"mass","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-56.25,1181.25],"tickmode":"array","ticktext":["0","300","600","900"],"tickvals":[0,300,600,900],"categoryorder":"array","categoryarray":["0","300","600","900"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"height","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1cd67b42794f":{"x":{},"y":{},"type":"bar"}},"cur_data":"1cd67b42794f","visdat":{"1cd67b42794f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-2-2"><div class="card-body html-fill-item html-fill-container" data-title="Table">
+<div class="cell-output-display html-fill-item html-fill-container">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">height</th>
+<th style="text-align: right;">mass</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">homeworld</th>
+<th style="text-align: left;">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Luke Skywalker</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: right;">77.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C-3PO</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">75.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Droid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2-D2</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">32.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Droid</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Darth Vader</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: right;">136.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leia Organa</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">49.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Alderaan</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owen Lars</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">120.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beru Whitesun Lars</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">75.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R5-D4</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">32.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Droid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Biggs Darklighter</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">84.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obi-Wan Kenobi</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">77.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Stewjon</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anakin Skywalker</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">84.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wilhuff Tarkin</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Eriadu</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chewbacca</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: right;">112.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Kashyyyk</td>
+<td style="text-align: left;">Wookiee</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Han Solo</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Corellia</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Greedo</td>
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">74.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Rodia</td>
+<td style="text-align: left;">Rodian</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jabba Desilijic Tiure</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">1358.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Nal Hutta</td>
+<td style="text-align: left;">Hutt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wedge Antilles</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">77.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Corellia</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jek Tono Porkins</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">110.0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Bestine IV</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yoda</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Yoda’s species</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Palpatine</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">75.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Boba Fett</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">78.2</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Kamino</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IG-88</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">140.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Droid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bossk</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">113.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Trandosha</td>
+<td style="text-align: left;">Trandoshan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lando Calrissian</td>
+<td style="text-align: right;">177</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Socorro</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lobot</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Bespin</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ackbar</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">83.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Mon Cala</td>
+<td style="text-align: left;">Mon Calamari</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mon Mothma</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Chandrila</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arvel Crynyd</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wicket Systri Warrick</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Endor</td>
+<td style="text-align: left;">Ewok</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nien Nunb</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">68.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Sullust</td>
+<td style="text-align: left;">Sullustan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Qui-Gon Jinn</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">89.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nute Gunray</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">90.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Cato Neimoidia</td>
+<td style="text-align: left;">Neimodian</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Finis Valorum</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Coruscant</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Padmé Amidala</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">45.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jar Jar Binks</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">66.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Gungan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roos Tarpals</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: right;">82.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Gungan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rugor Nass</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Gungan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ric Olié</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Watto</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Toydaria</td>
+<td style="text-align: left;">Toydarian</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sebulba</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">40.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Malastare</td>
+<td style="text-align: left;">Dug</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quarsh Panaka</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shmi Skywalker</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Darth Maul</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Dathomir</td>
+<td style="text-align: left;">Zabrak</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bib Fortuna</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Ryloth</td>
+<td style="text-align: left;">Twi’lek</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ayla Secura</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Ryloth</td>
+<td style="text-align: left;">Twi’lek</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ratts Tyerel</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Aleen Minor</td>
+<td style="text-align: left;">Aleena</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dud Bolt</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">45.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Vulpter</td>
+<td style="text-align: left;">Vulptereen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gasgano</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Troiken</td>
+<td style="text-align: left;">Xexto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ben Quadinaros</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">65.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tund</td>
+<td style="text-align: left;">Toong</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mace Windu</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">84.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Haruun Kal</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ki-Adi-Mundi</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">82.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Cerea</td>
+<td style="text-align: left;">Cerean</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kit Fisto</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">87.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Glee Anselm</td>
+<td style="text-align: left;">Nautolan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eeth Koth</td>
+<td style="text-align: right;">171</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Iridonia</td>
+<td style="text-align: left;">Zabrak</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adi Gallia</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">50.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Coruscant</td>
+<td style="text-align: left;">Tholothian</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Saesee Tiin</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Iktotch</td>
+<td style="text-align: left;">Iktotchi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yarael Poof</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Quermia</td>
+<td style="text-align: left;">Quermian</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Plo Koon</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Dorin</td>
+<td style="text-align: left;">Kel Dor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mas Amedda</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Champala</td>
+<td style="text-align: left;">Chagrian</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gregar Typho</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">85.0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cordé</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cliegg Lars</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poggle the Lesser</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Geonosis</td>
+<td style="text-align: left;">Geonosian</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Luminara Unduli</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">56.2</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Mirial</td>
+<td style="text-align: left;">Mirialan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Barriss Offee</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">50.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Mirial</td>
+<td style="text-align: left;">Mirialan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dormé</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dooku</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Serenno</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bail Prestor Organa</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Alderaan</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jango Fett</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Concord Dawn</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zam Wesell</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: right;">55.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Zolan</td>
+<td style="text-align: left;">Clawdite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dexter Jettster</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">102.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Ojom</td>
+<td style="text-align: left;">Besalisk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lama Su</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: right;">88.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Kamino</td>
+<td style="text-align: left;">Kaminoan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taun We</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Kamino</td>
+<td style="text-align: left;">Kaminoan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jocasta Nu</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Coruscant</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R4-P17</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Droid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wat Tambor</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">48.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Skako</td>
+<td style="text-align: left;">Skakoan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">San Hill</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Muunilinst</td>
+<td style="text-align: left;">Muun</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shaak Ti</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">57.0</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">Shili</td>
+<td style="text-align: left;">Togruta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grievous</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: right;">159.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Kalee</td>
+<td style="text-align: left;">Kaleesh</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tarfful</td>
+<td style="text-align: right;">234</td>
+<td style="text-align: right;">136.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Kashyyyk</td>
+<td style="text-align: left;">Wookiee</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Raymus Antilles</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Alderaan</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sly Moore</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">48.0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Umbara</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tion Medon</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">Utapau</td>
+<td style="text-align: left;">Pau’an</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Finn</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rey</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Poe Dameron</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BB8</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">masculine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Droid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Captain Phasma</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">feminine</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Human</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div id="page-2" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-page-2">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: ; grid-auto-columns: minmax(0, 1fr);">
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-
-
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -597,6 +1335,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 

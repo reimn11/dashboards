@@ -1,11 +1,48 @@
 ---
-title: "dashboards"
+title: "Star Wars Dashboared"
+author: "Rei Miyashiro"
+format: 
+  dashboard:
+    orientation: rows
 ---
 
-This is a Quarto website.
+```{r}
+library(tidyverse)
+library(plotly)
+#read_csv()
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+```
+# Page 1
+
+## Row 1
 
 ```{r}
-1 + 1
+p1 <- ggplot(data = starwars, aes(x = mass, y = height, text = name)) +
+  geom_point()
+
+ggplotly(p1)
 ```
+
+## Row 2 {.tabset}
+
+
+```{r}
+#| title: bar Chart
+
+p2 <- ggplot(data = starwars, aes(x = mass, y = height)) +
+  geom_bar(stat="identity") +
+  theme(axis.title.x = element_text(angle = 45, vjust = .5, hjust = 1))
+
+ggplotly(p2)
+```
+
+```{r}
+#| title: Table
+
+starwars <- starwars %>%
+  select(name, height, mass, gender, homeworld, species)
+
+knitr::kable(starwars)
+```
+
+# Page 2
