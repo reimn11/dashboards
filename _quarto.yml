@@ -10,6 +10,9 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - icon: github
+        href: https://github.com/reimn11
+        target: blank
 
 format:
   html:

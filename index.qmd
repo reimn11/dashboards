@@ -1,5 +1,5 @@
 ---
-title: "Star Wars Dashboared"
+title: "Penguins Dashboard"
 author: "Rei Miyashiro"
 format: 
   dashboard:
@@ -7,42 +7,49 @@ format:
 ---
 
 ```{r}
+install.packages("palmerpenguins")
 library(tidyverse)
 library(plotly)
+library(palmerpenguins)
 #read_csv()
 
+penguins
 ```
 # Page 1
 
 ## Row 1
 
 ```{r}
-p1 <- ggplot(data = starwars, aes(x = mass, y = height, text = name)) +
-  geom_point()
+#| title: Box Plot
+p1 <- ggplot(data = penguins, aes(x = species, y = bill_length_mm, fill = species)) +
+  geom_boxplot()
 
 ggplotly(p1)
 ```
 
-## Row 2 {.tabset}
 
 
 ```{r}
-#| title: bar Chart
+#| title: Scatter Plot
 
-p2 <- ggplot(data = starwars, aes(x = mass, y = height)) +
-  geom_bar(stat="identity") +
-  theme(axis.title.x = element_text(angle = 45, vjust = .5, hjust = 1))
+p2 <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g, fill = species)) +
+  geom_point()
+  
 
 ggplotly(p2)
 ```
-
+## Row 2 {.tabset}
 ```{r}
 #| title: Table
 
-starwars <- starwars %>%
-  select(name, height, mass, gender, homeworld, species)
+show(penguins)
+penguins <- penguins %>%
+  filter(island == "Chinstrap")
+  select(species, island, year, sex)
 
-knitr::kable(starwars)
+knitr::kable(penguins)
 ```
+
+
 
 # Page 2
