@@ -1,0 +1,49 @@
+---
+title: "penguins"
+author: "Rei Miyashiro"
+format: 
+  dashboard:
+    orientation: rows
+---
+
+### Row 1
+
+```{r}
+#install.packages("palmerpenguins")
+library(tidyverse)
+library(plotly)
+library(palmerpenguins)
+#read_csv()
+data("penguins", package = "palmerpenguins")
+```
+
+```{r}
+#| title: Box Plot
+p1 <- ggplot(data = penguins, aes(x = species, y = bill_length_mm, fill = species)) +
+  geom_boxplot()
+
+ggplotly(p1)
+```
+
+```{r}
+#| title: Scatter Plot
+
+p2 <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g, fill = species)) +
+  theme_light() +
+  geom_point()
+  
+
+ggplotly(p2)
+```
+
+### Row 2
+
+```{r}
+#| title: Table
+
+penguins_filtered <- penguins %>%
+  filter(island == "Chinstrap") %>%
+  select(species, island, year, sex)
+
+knitr::kable(penguins)
+```
