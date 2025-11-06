@@ -7,49 +7,55 @@ format:
 ---
 
 ```{r}
-install.packages("palmerpenguins")
 library(tidyverse)
 library(plotly)
-library(palmerpenguins)
 #read_csv()
 
-penguins
+
 ```
+
 # Page 1
 
 ## Row 1
 
 ```{r}
 #| title: Box Plot
-p1 <- ggplot(data = penguins, aes(x = species, y = bill_length_mm, fill = species)) +
-  geom_boxplot()
+p1 <- ggplot(data = starwars, aes(x = mass, y = height, fill = species)) +
+  geom_point()
 
 ggplotly(p1)
 ```
 
-
-
 ```{r}
-#| title: Scatter Plot
 
-p2 <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g, fill = species)) +
-  geom_point()
-  
+#| title: Species Count by Homeworld
+species_count <- starwars %>%
+count(homeworld, species, sort = TRUE) %>%
+drop_na()
+
+p2 <- ggplot(species_count, aes(x = reorder(homeworld, n), y = n, fill = species)) +
+geom_col() +
+coord_flip() +
+labs(
+title = "Number of Characters by Homeworld and Species",
+x = "Homeworld",
+y = "Count"
+) +
+theme_light()
 
 ggplotly(p2)
+
 ```
+
 ## Row 2 {.tabset}
+
 ```{r}
 #| title: Table
 
-show(penguins)
-penguins <- penguins %>%
-  filter(island == "Chinstrap")
-  select(species, island, year, sex)
+starwars <- starwars %>%
+  select(name, height, mass, sex, species)
 
-knitr::kable(penguins)
+knitr::kable(starwars)
 ```
-
-
 
 # Page 2
