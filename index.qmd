@@ -1,5 +1,5 @@
 ---
-title: "Penguins Dashboard"
+title: "Star Wars Dashboard"
 author: "Rei Miyashiro"
 format: 
   dashboard:
@@ -58,4 +58,4 @@ starwars <- starwars %>%
 knitr::kable(starwars)
 ```
 
-# Page 2
+# 

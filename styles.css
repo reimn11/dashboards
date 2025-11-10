@@ -1,1 +1,33 @@
 /* css styles */
+h1, h2, h3, h4, h5, h6 {
+  color: #0055ff; /* blue headings */
+}
+
+body {
+  color: black; /* default body text color */
+}
+
+/* link colors */
+a {
+  color: yellow; /* normal link color */
+}
+a:hover {
+  color: #ff6600; /* hover color */
+}
+
+/* ===== Navbar link and title colors ===== */
+.navbar {
+  background-color: #1a1a1a !important; /* optional: change navbar background */
+}
+
+.navbar-brand, 
+.navbar-nav a.nav-link {
+  color: #ffcc00 !important; /* change text color for title and links */
+  font-weight: bold;
+}
+
+.navbar-brand:hover,
+.navbar-nav a.nav-link:hover {
+  color: #ff6600 !important; /* hover color */
+}
+
